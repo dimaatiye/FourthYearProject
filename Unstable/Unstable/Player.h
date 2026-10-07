@@ -12,9 +12,9 @@ private:
 	Vector2 position = { 400,500 };
 	Vector2 velocity = { 0,0 };
 
-	float speed = 5.0f;
+	float speed = 0.1f;
 	float jumpForce = -10.0f;
-	float gravity = 0.5;
+	float gravity = 0.0004;
 
 	Color color[5] = { RED, GREEN, BLUE, PINK, PURPLE };
 	int colorIndex = 0;
