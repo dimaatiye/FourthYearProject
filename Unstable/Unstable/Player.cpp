@@ -13,9 +13,30 @@ void Player::Update()
 			colorIndex = 0;
 		}
 	}
+	if (DisableEnter == false)
+	{
+		if (IsKeyPressed(KEY_ENTER))
+		{
+			playerColor = color[colorIndex];
+			colorSelected = true;
+			std::cout << "Color selected: " << colorIndex << std::endl;
+			DisableEnter = true;
+		}
+	}
+
+
 }
 
 void Player::Draw()
 {
-	DrawRectangle(position.x, position.y, 50, 50, color[colorIndex]);
+	if (colorSelected)
+	{
+		drawColor = playerColor;
+	}
+	else
+	{
+		drawColor = color[colorIndex];
+	}
+
+	DrawRectangle(position.x, position.y, 50, 50, drawColor);
 }

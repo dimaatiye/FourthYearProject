@@ -1,5 +1,6 @@
 #pragma once
 #include "raylib.h"
+#include <iostream>
 class Player
 {
 public:
@@ -17,5 +18,9 @@ private:
 
 	Color color[5] = { RED, GREEN, BLUE, PINK, PURPLE };
 	int colorIndex = 0;
+	Color playerColor = color[colorIndex];
+	bool colorSelected = false;
+	Color drawColor;
+	bool DisableEnter = false;
 };
 
