@@ -15,5 +15,7 @@ private:
 	float jumpForce = -10.0f;
 	float gravity = 0.5;
 
+	Color color[5] = { RED, GREEN, BLUE, PINK, PURPLE };
+	int colorIndex = 0;
 };
 
