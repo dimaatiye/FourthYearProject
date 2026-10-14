@@ -33,10 +33,10 @@ void Player::Update()
 		velocity.y += gravity;
 		position.y += velocity.y;
 
-		if (position.y >= 750)
+		if (position.y >= 825)
 		{
 			velocity.y = 0;
-			position.y = 750;
+			position.y = 825;
 		}
 		if(position.x <= 0)
 		{
@@ -46,7 +46,7 @@ void Player::Update()
 		{
 			position.x = 1050;
 		}
-		if (IsKeyPressed(KEY_SPACE) && position.y == 750)
+		if (IsKeyPressed(KEY_SPACE) && position.y == 825)
 		{
 			velocity.y += jumpForce;
 			std::cout << "player jumping " << std::endl;
@@ -78,6 +78,9 @@ void Player::Draw()
 		drawColor = color[colorIndex];
 	}
 
-	DrawRectangle(position.x-5, position.y - 25, 30, 30, drawColor);
-	DrawRectangle(position.x , position.y , 20, 50, drawColor);
+	DrawRectangle(position.x - 5, position.y - 125, 30, 30, drawColor);// head
+	DrawRectangle(position.x , position.y -100 , 20, 50, drawColor);//boddy
+	DrawRectangle(position.x +20, position.y -60, 10,30, drawColor); // right leg
+	DrawRectangle(position.x -10, position.y - 60, 10, 30, drawColor);// left leg
+
 }
