@@ -78,5 +78,6 @@ void Player::Draw()
 		drawColor = color[colorIndex];
 	}
 
-	DrawRectangle(position.x, position.y, 50, 50, drawColor);
+	DrawRectangle(position.x-5, position.y - 25, 30, 30, drawColor);
+	DrawRectangle(position.x , position.y , 20, 50, drawColor);
 }
