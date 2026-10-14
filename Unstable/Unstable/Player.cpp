@@ -46,6 +46,13 @@ void Player::Update()
 		{
 			position.x = 1050;
 		}
+		if (IsKeyPressed(KEY_SPACE) && position.y == 750)
+		{
+			velocity.y += jumpForce;
+			std::cout << "player jumping " << std::endl;
+
+
+		}
 		if (IsKeyDown(KEY_LEFT))
 		{
 			position.x -= speed;
