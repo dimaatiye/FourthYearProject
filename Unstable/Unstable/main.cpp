@@ -5,6 +5,7 @@ int main() {
 
 	InitWindow(1100, 800, "Unstable");
 	Player player;
+
 	while(!WindowShouldClose()) {
 		player.Update();
 		BeginDrawing();

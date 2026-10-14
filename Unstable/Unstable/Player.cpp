@@ -38,6 +38,10 @@ void Player::Update()
 			velocity.y = 0;
 			position.y = 750;
 		}
+		if(position.x <= 0)
+		{
+			position.x = 0;
+		}
 		if (IsKeyDown(KEY_LEFT))
 		{
 			position.x -= speed;
