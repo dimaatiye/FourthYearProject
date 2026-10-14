@@ -78,9 +78,9 @@ void Player::Draw()
 		drawColor = color[colorIndex];
 	}
 
-	DrawRectangle(position.x - 5, position.y - 125, 30, 30, drawColor);// head
-	DrawRectangle(position.x , position.y -100 , 20, 50, drawColor);//boddy
-	DrawRectangle(position.x +20, position.y -60, 10,30, drawColor); // right leg
-	DrawRectangle(position.x -10, position.y - 60, 10, 30, drawColor);// left leg
+	DrawRectangle(position.x +2, position.y - 115, 15, 15, drawColor);// head
+	DrawRectangle(position.x -7, position.y -100 , 32, 50, drawColor);//boddy
+	DrawRectangle(position.x +15, position.y -60, 10,30, drawColor); // right leg
+	DrawRectangle(position.x -7, position.y -60, 10, 30, drawColor);// left leg
 
 }
