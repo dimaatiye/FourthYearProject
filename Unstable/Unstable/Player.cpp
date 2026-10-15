@@ -7,6 +7,7 @@ Player::Player()
 
 void Player::Update()
 {
+	frame++;
 	if (colorSelected == false) {
 
 
@@ -48,21 +49,25 @@ void Player::Update()
 		}
 		if (IsKeyPressed(KEY_SPACE) && position.y == 825)
 		{
-			velocity.y += jumpForce;
+			state = PlayerState::Jumping;
 			std::cout << "player jumping " << std::endl;
 
 
 		}
-		if (IsKeyDown(KEY_LEFT))
+		else if (IsKeyDown(KEY_LEFT))
 		{
-			position.x -= speed;
+			state = PlayerState::WalkLeft;
 			std::cout << "player moving left " << std::endl;
 
 		}
-		if (IsKeyDown(KEY_RIGHT))
+		else if (IsKeyDown(KEY_RIGHT))
 		{
+			state = PlayerState::WalkRight;
 			std::cout << "player moving right " << std::endl;
-			position.x += speed;
+			
+		}
+		else {
+			state = PlayerState::Idle;
 		}
 	}
 }
@@ -78,9 +83,90 @@ void Player::Draw()
 		drawColor = color[colorIndex];
 	}
 
-	DrawRectangle(position.x +2, position.y - 115, 15, 15, drawColor);// head
-	DrawRectangle(position.x -7, position.y -100 , 32, 50, drawColor);//boddy
-	DrawRectangle(position.x +15, position.y -60, 10,30, drawColor); // right leg
-	DrawRectangle(position.x -7, position.y -60, 10, 30, drawColor);// left leg
+	switch (state)
+	{
+	case PlayerState::Idle:
+		DrawIdle();
+		break;
+	case PlayerState::Jumping:
+		DrawJumping();
+		break;
+	case PlayerState::WalkLeft:
+		DrawWalkLeft();
+		break;
+	case PlayerState::WalkRight:
+		DrawWalkRight();
+		break;
+
+	}
+}
+
+void Player::DrawBody()
+{
+	DrawRectangle(position.x + 2, position.y - 115, 15, 15, drawColor);// head
+	DrawRectangle(position.x - 7, position.y - 100, 32, 50, drawColor);//boddy
+	DrawRectangle(position.x + 15, position.y - 60, 10, 30, drawColor); // right leg
+	DrawRectangle(position.x - 7, position.y - 60, 10, 30, drawColor);// left leg
+}
+
+void Player::DrawIdle()
+{
+	//DrawBody();
+	if ((frame / 10) % 2 == 0)//switch between two animation frames every 10 frames
+	{
+		DrawRectangle(position.x + 2, position.y - 115, 15, 15, drawColor);// head
+		DrawRectangle(position.x - 7, position.y - 100, 32, 50, drawColor);//boddy
+		DrawRectangle(position.x + 15, position.y - 60, 10, 30, drawColor); // right leg
+		DrawRectangle(position.x - 7, position.y - 60, 10, 30, drawColor);// left leg
+		std::cout << "frame: " << frame << std::endl;
+	}
+	else
+	{
+		DrawRectangle(position.x + 2, position.y - 105, 15, 15, drawColor);// head
+		DrawRectangle(position.x - 7, position.y - 90, 32, 50, drawColor);//boddy
+		DrawRectangle(position.x + 15, position.y - 50, 10, 20, drawColor); // right leg
+		DrawRectangle(position.x - 7, position.y - 50, 10, 20, drawColor);// left leg
+	}
+	
+}
+
+void Player::DrawJumping()
+{
+	DrawBody();
+	velocity.y += jumpForce;
+}
+
+void Player::DrawWalkLeft()
+{
+	//DrawBody();
+	position.x -= speed;
+	DrawWalking();
+}
+
+void Player::DrawWalkRight()
+{
+	//DrawBody();
+	position.x += speed;
+	DrawWalking();
 
 }
+
+void Player::DrawWalking()
+{
+	if ((frame / 10) % 2 == 0)//switch between two animation frames every 10 frames
+	{
+		DrawRectangle(position.x + 2, position.y - 115, 15, 15, drawColor);// head
+		DrawRectangle(position.x - 7, position.y - 100, 32, 50, drawColor);//boddy
+		DrawRectangle(position.x + 15, position.y - 60, 10, 30, drawColor); // right leg
+		DrawRectangle(position.x - 7, position.y - 60, 10, 20, drawColor);// left leg
+		std::cout << "frame: " << frame << std::endl;
+	}
+	else
+	{
+		DrawRectangle(position.x + 2, position.y - 115, 15, 15, drawColor);// head
+		DrawRectangle(position.x - 7, position.y - 100, 32, 50, drawColor);//boddy
+		DrawRectangle(position.x + 15, position.y - 60, 10, 20, drawColor); // right leg
+		DrawRectangle(position.x - 7, position.y - 60, 10, 30, drawColor);// left leg
+	}
+}
+
