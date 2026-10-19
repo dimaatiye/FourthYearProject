@@ -23,7 +23,7 @@ private:
 	float jumpForce = -40.0f;
 	float gravity = 4;
 
-	Color color[5] = { RED, GREEN, BLUE, PINK, PURPLE };
+	Color color[5] = { WHITE, GREEN, BLUE, PINK, PURPLE };
 	int colorIndex = 0;
 	Color playerColor = color[colorIndex];
 	bool colorSelected = false;

@@ -16,6 +16,8 @@ void Player::Update()
 			if (colorIndex >= 5) {
 				colorIndex = 0;
 			}
+			std::cout << "you have clicked C to change the color " << std::endl;
+
 		}
 		if (DisableEnter == false)
 		{
@@ -118,7 +120,6 @@ void Player::DrawIdle()
 		DrawRectangle(position.x - 7, position.y - 100, 32, 50, drawColor);//boddy
 		DrawRectangle(position.x + 15, position.y - 60, 10, 30, drawColor); // right leg
 		DrawRectangle(position.x - 7, position.y - 60, 10, 30, drawColor);// left leg
-		std::cout << "frame: " << frame << std::endl;
 	}
 	else
 	{
@@ -159,7 +160,6 @@ void Player::DrawWalking()
 		DrawRectangle(position.x - 7, position.y - 100, 32, 50, drawColor);//boddy
 		DrawRectangle(position.x + 15, position.y - 60, 10, 30, drawColor); // right leg
 		DrawRectangle(position.x - 7, position.y - 60, 10, 20, drawColor);// left leg
-		std::cout << "frame: " << frame << std::endl;
 	}
 	else
 	{
