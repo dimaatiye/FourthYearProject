@@ -1,13 +1,14 @@
 player:
-    position: {x:100, y:700}
+    position: { x: 100, y: 700 }
     
 platforms:
     - type: floor
-      position: {x:0, y:800}
-      size: {x:400, y:40}
+      position: { x: 0, y: 800 }
+      size: { x: 400, y: 40}
     - type: platform
-      position: {x:450, y:700}
-      size: {x:150, y:20}
+      position: { x: 450, y: 700 }
+      size: { x: 150, y: 20}
     - type: platform
-      position: {x:700, y:600}
-      size: {x:200, y:20}
+      position: { x: 700, y: 600 }
+      size: { x: 200, y: 20}
+level : 1

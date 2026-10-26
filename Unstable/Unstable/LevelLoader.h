@@ -34,7 +34,7 @@ struct LevelData
 	PlayerData m_player;
 	std::vector<PlatformData> m_platforms;
 };
-
+void TestYAML();
 /// <summary>
 /// @brief A class to manage level loading.
 /// 
@@ -42,10 +42,7 @@ struct LevelData
 /// </summary>
 class LevelLoader
 {
-	/// <summary>
-/// @brief No-op default constructor.
-/// </summary>
-	LevelLoader() = default;
+public:
  /// <summary>
  /// @brief Loads and parses a YAML level file.
  /// 
@@ -57,5 +54,8 @@ class LevelLoader
  /// <param name="t_levelNr">The level number.</param>
  /// <param name="t_level">A reference to the LevelData object.</param>
     static void load(int t_levelNum, LevelData& t_level);
+
+private:
+
 };
 
