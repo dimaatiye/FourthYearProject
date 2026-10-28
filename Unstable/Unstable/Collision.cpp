@@ -9,6 +9,22 @@ void Collision::CheckPlatforms(Player& t_player, LevelData& t_level)
     for (const PlatformData& platform : t_level.m_platforms)
     {
         Rectangle platformRect = { platform.m_position.x, platform.m_position.y, platform.m_size.x, platform.m_size.y };
-    }
+        if (CheckCollisionRecs(playerRect, platformRect))
+        {
+            Vector2 velocity = t_player.GetVelocity();
 
+            if (velocity.y > 0)
+            {
+                float playerFeet = playerPosition.y - 30;
+                float platformTop = platform.m_position.y;
+
+                if (playerFeet <= platformTop && playerFeet + velocity.y >= platformTop)
+                {
+                    t_player.SetPosition({playerPosition.x, platformTop + 30 });
+                }
+            }
+        }
+    
+    }
+  
 }

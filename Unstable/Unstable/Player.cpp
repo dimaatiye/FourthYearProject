@@ -179,3 +179,9 @@ Vector2 Player::GetPosition()
 {
 	return Vector2();
 }
+Vector2 Player::GetVelocity()
+{
+	return velocity;
+}
+
+

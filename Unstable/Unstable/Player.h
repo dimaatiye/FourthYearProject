@@ -17,6 +17,8 @@ public:
 	PlayerState state = PlayerState::Idle;
 	void SetPosition(Vector2 t_position);
 	Vector2 GetPosition();
+	Vector2 GetVelocity();
+
 private:
 	Vector2 position = { 400,500 };
 	Vector2 velocity = { 0,0 };
