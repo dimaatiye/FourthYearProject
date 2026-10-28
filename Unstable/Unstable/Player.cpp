@@ -170,3 +170,7 @@ void Player::DrawWalking()
 	}
 }
 
+void Player::SetPosition(Vector2 t_position)
+{
+	position = t_position;
+}

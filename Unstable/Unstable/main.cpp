@@ -15,6 +15,7 @@ int main() {
 	LevelData level;
 	
 	LevelLoader::load(1, level);
+	player.SetPosition(level.m_player.m_position);
 
 	std::cout << "Player X: "
 		<< level.m_player.m_position.x << std::endl;
