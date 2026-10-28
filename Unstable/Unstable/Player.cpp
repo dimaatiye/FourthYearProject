@@ -174,3 +174,8 @@ void Player::SetPosition(Vector2 t_position)
 {
 	position = t_position;
 }
+
+Vector2 Player::GetPosition()
+{
+	return Vector2();
+}
