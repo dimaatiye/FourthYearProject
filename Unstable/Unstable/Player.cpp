@@ -177,11 +177,16 @@ void Player::SetPosition(Vector2 t_position)
 
 Vector2 Player::GetPosition()
 {
-	return Vector2();
+	return position;
 }
 Vector2 Player::GetVelocity()
 {
 	return velocity;
+}
+
+void Player::SetVelocity(Vector2 t_velocity)
+{
+	velocity = t_velocity;		
 }
 
 

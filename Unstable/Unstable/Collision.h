@@ -3,9 +3,9 @@
 #include "LevelLoader.h"
 class Collision
 {
-public:
-
 private:
+
+public:
 	void CheckPlatforms(Player& t_player, LevelData& t_level);
 
 };

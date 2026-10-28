@@ -4,7 +4,7 @@
 #include <yaml-cpp/yaml.h>
 #include "LevelLoader.h"
 #include <iostream>
-
+#include "Collision.h"
 
 
 int main() {
@@ -13,6 +13,7 @@ int main() {
 	SetTargetFPS(60);
 	Player player;
 	LevelData level;
+	Collision collision;
 	
 	LevelLoader::load(1, level);
 	player.SetPosition(level.m_player.m_position);
@@ -28,6 +29,8 @@ int main() {
 
 	while(!WindowShouldClose()) {
 		player.Update();
+		collision.CheckPlatforms(player, level);
+
 		BeginDrawing();
 		ClearBackground(BLACK);
 

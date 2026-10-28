@@ -18,6 +18,7 @@ public:
 	void SetPosition(Vector2 t_position);
 	Vector2 GetPosition();
 	Vector2 GetVelocity();
+	void SetVelocity(Vector2 t_velocity);
 
 private:
 	Vector2 position = { 400,500 };
