@@ -46,18 +46,12 @@ void LevelLoader::load(int t_levelNum, LevelData& t_level)
 {
     std::string filename ="levels/level" + std::to_string(t_levelNum) + ".yaml";
 
-    try
-    {
-        YAML::Node baseNode = YAML::LoadFile(filename);
-        std::cout << "Loading file: " << filename << std::endl;
-        std::cout << "YAML contents:\n" << baseNode << std::endl;
-        baseNode >> t_level;
-    }
-    catch (const YAML::Exception& e)
-    {
-        std::cout << "Could not load level: "
-            << e.what() << std::endl;
-    }
+
+     YAML::Node baseNode = YAML::LoadFile(filename);
+
+     baseNode >> t_level;
+    
+
 }
 
 void TestYAML()

@@ -49,7 +49,12 @@ void Player::Update()
 		{
 			position.x = 1050;
 		}
-		if (IsKeyPressed(KEY_SPACE) && position.y == 825)
+		if (position.y < 0)
+		{
+			position.y = 0;
+		}
+
+		if (IsKeyPressed(KEY_SPACE) )
 		{
 			state = PlayerState::Jumping;
 			std::cout << "player jumping " << std::endl;
