@@ -30,6 +30,7 @@ int main() {
 	while(!WindowShouldClose()) {
 		player.Update();
 		collision.CheckPlatforms(player, level);
+		collision.CheckDisappearingPlatform(player, level);
 
 		BeginDrawing();
 		ClearBackground(BLACK);
@@ -37,13 +38,16 @@ int main() {
 		player.Draw();
 		for (const PlatformData& platform : level.m_platforms)
 		{
-			DrawRectangle(
-				(int)platform.m_position.x,
-				(int)platform.m_position.y,
-				(int)platform.m_size.x,
-				(int)platform.m_size.y,
-				WHITE
-			);
+			if (platform.m_active)
+			{
+				DrawRectangle(
+					(int)platform.m_position.x,
+					(int)platform.m_position.y,
+					(int)platform.m_size.x,
+					(int)platform.m_size.y,
+					WHITE
+				);
+			}
 		}
 		EndDrawing();
 	}

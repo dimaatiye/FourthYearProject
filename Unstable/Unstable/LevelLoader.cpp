@@ -3,6 +3,7 @@
 #include <yaml-cpp/yaml.h>
 
 
+
 void operator >> (const YAML::Node& t_platformNode, PlatformData& t_platform)
 {
     t_platform.m_type = t_platformNode["type"].as<std::string>();

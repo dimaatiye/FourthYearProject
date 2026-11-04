@@ -13,6 +13,9 @@ struct PlatformData
 	std::string m_type;
 	Vector2 m_position;
 	Vector2 m_size;
+
+	bool m_active = true;
+	bool m_triggered = false;
 };
 
 /// <summary>

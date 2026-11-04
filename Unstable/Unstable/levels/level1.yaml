@@ -29,7 +29,7 @@ platforms:
     - type: platform
       position: { x: 800, y: 560 }
       size: { x: 100, y: 20}
-    - type: platform
+    - type: disappearing
       position: { x: 900, y: 540 }
       size: { x: 100, y: 20}
     - type: platform
