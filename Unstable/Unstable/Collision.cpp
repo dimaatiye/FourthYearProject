@@ -43,7 +43,7 @@ void Collision::CheckDisappearingPlatform(Player& t_player, LevelData& t_level)
         if (platform.m_type == "disappearing" && platform.m_active)
         {
 			float distance = Vector2Distance(playerPosition, platform.m_position);
-            if (distance < 40)
+            if (distance < 70)
             {
 				platform.m_triggered = true;
                 platform.m_active = false;

@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "Menu.h"
 
 Player::Player()
 {
@@ -40,6 +41,8 @@ void Player::Update()
 		{
 			velocity.y = 0;
 			position.y = 825;
+			DrawText(TextFormat("YOU LOSE"), 200, 80, 20, RED);
+
 		}
 		if(position.x <= 0)
 		{
@@ -78,6 +81,7 @@ void Player::Update()
 		}
 	}
 }
+
 
 void Player::Draw()
 {
