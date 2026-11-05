@@ -5,7 +5,7 @@
 #include "LevelLoader.h"
 #include <iostream>
 #include "Collision.h"
-
+#include "Menu.h"
 
 int main() {
 
@@ -14,10 +14,10 @@ int main() {
 	Player player;
 	LevelData level;
 	Collision collision;
-	
+	Menu menu;
 	LevelLoader::load(1, level);
 	player.SetPosition(level.m_player.m_position);
-
+	bool started = false;
 	std::cout << "Player X: "
 		<< level.m_player.m_position.x << std::endl;
 	std::cout << "Player Y: "
@@ -28,28 +28,40 @@ int main() {
 	TestYAML();
 
 	while(!WindowShouldClose()) {
-		player.Update();
-		collision.CheckPlatforms(player, level);
-		collision.CheckDisappearingPlatform(player, level);
 
 		BeginDrawing();
 		ClearBackground(BLACK);
-
-		player.Draw();
-		for (const PlatformData& platform : level.m_platforms)
+		if (!started)
 		{
-			if (platform.m_active)
+			menu.Draw();
+
+			if (menu.Update())
 			{
-				DrawRectangle(
-					(int)platform.m_position.x,
-					(int)platform.m_position.y,
-					(int)platform.m_size.x,
-					(int)platform.m_size.y,
-					WHITE
-				);
+				started = true;
 			}
 		}
-		EndDrawing();
+		else
+		{
+			player.Update();
+			collision.CheckPlatforms(player, level);
+			collision.CheckDisappearingPlatform(player, level);
+			player.Draw();
+			for (const PlatformData& platform : level.m_platforms)
+			{
+				if (platform.m_active)
+				{
+					DrawRectangle(
+						(int)platform.m_position.x,
+						(int)platform.m_position.y,
+						(int)platform.m_size.x,
+						(int)platform.m_size.y,
+						WHITE
+					);
+				}
+			}
+		}
+			EndDrawing();
+		
 	}
 
 	CloseWindow();
