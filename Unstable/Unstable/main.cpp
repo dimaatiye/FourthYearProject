@@ -14,10 +14,12 @@ int main() {
 	Player player;
 	LevelData level;
 	Collision collision;
+
 	Menu menu;
 	LevelLoader::load(1, level);
 	player.SetPosition(level.m_player.m_position);
 	bool started = false;
+	bool ended = false;
 	std::cout << "Player X: "
 		<< level.m_player.m_position.x << std::endl;
 	std::cout << "Player Y: "
@@ -27,7 +29,7 @@ int main() {
 		<< level.m_platforms.size() << std::endl;
 	TestYAML();
 
-	while(!WindowShouldClose()) {
+	while(!WindowShouldClose() && !ended) {
 
 		BeginDrawing();
 		ClearBackground(BLACK);
@@ -35,9 +37,15 @@ int main() {
 		{
 			menu.Draw();
 
-			if (menu.Update())
+			MenuChoice choice = menu.Update();
+
+			if (choice == START)
 			{
 				started = true;
+			}
+			else if (choice == QUIT)
+			{
+				ended = true;
 			}
 		}
 		else

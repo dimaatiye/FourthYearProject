@@ -1,16 +1,20 @@
 #include "Menu.h"
 Menu::Menu()
 {
-	m_startButton = { 400, 300, 200, 50 };
+	m_startButton = { 360, 350, 320, 60 };
+	m_quitButton = { 360, 420, 320, 60 };
 }
 void Menu::Draw()
 {
-	DrawText("Unstable", 400, 200, 50, WHITE);
+	DrawText("Unstable", 320, 200, 90, WHITE);
 	DrawRectangleRec(m_startButton, PINK);
-	DrawText("START", 400, 300, 20, WHITE);
+	DrawRectangleRec(m_quitButton, YELLOW);
+	DrawText("START", 410, 350, 60, BLACK);
+	DrawText("QUIT", 450, 430, 60, BLACK);
+
 }
 
-bool Menu::Update()
+MenuChoice Menu::Update()
 {
 	Vector2 mousePosition = GetMousePosition();
 
@@ -18,9 +22,17 @@ bool Menu::Update()
 	{
 		if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
 		{
-			return true;
+			return START;
+		}
+	}
+	if (CheckCollisionPointRec(mousePosition, m_quitButton))
+	{
+		if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+		{
+			return QUIT;
 		}
 	}
 
+	return NONE;
 
 }
