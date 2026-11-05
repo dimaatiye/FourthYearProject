@@ -13,6 +13,7 @@ private :
 
 	Rectangle m_startButton;
 	Rectangle m_quitButton;
+	Rectangle m_infoButton;
 
 public:
 	Menu();
