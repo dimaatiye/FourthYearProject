@@ -20,13 +20,9 @@ int main() {
 	player.SetPosition(level.m_player.m_position);
 	bool started = false;
 	bool ended = false;
-	std::cout << "Player X: "
-		<< level.m_player.m_position.x << std::endl;
-	std::cout << "Player Y: "
-		<< level.m_player.m_position.y << std::endl;
-
-	std::cout << "Number of platforms: "
-		<< level.m_platforms.size() << std::endl;
+	std::cout << "Player X: "<< level.m_player.m_position.x << std::endl;
+	std::cout << "Player Y: "<< level.m_player.m_position.y << std::endl;
+	std::cout << "Number of platforms: "<< level.m_platforms.size() << std::endl;
 	TestYAML();
 
 	while(!WindowShouldClose() && !ended) {

@@ -1,19 +1,20 @@
 #include "Menu.h"
 Menu::Menu()
 {
-	m_startButton = { 360, 350, 320, 60 };
-	m_quitButton = { 360, 420, 320, 60 };
-	m_infoButton = { 360, 490, 450, 60 };
+
+	m_startButton = { x, y, w, h };
+	m_quitButton = { x, y + 70, w, h };
+	m_infoButton = { x, y + 140, w +130, h };
 }
 void Menu::Draw()
 {
-	DrawText("Unstable", 320, 200, 90, WHITE);
+	DrawText("Unstable", x - 40, y - 150, textSize + 30, WHITE);
 	DrawRectangleRec(m_startButton, PINK);
 	DrawRectangleRec(m_quitButton, YELLOW);
 	DrawRectangleRec(m_infoButton, GREEN);
-	DrawText("START", 410, 350, 60, BLACK);
-	DrawText("QUIT", 450, 430, 60, BLACK);
-	DrawText("INFORMATION", 370, 500, 60, BLACK);
+	DrawText("START", x +50, y, textSize, BLACK);
+	DrawText("QUIT", x + 90, y +80, textSize, BLACK);
+	DrawText("INFORMATION", x+10, y+150, textSize, BLACK);
 
 }
 
