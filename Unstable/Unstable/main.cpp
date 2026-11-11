@@ -7,6 +7,7 @@
 #include "Collision.h"
 #include "Menu.h"
 #include "Information.h"
+#include "HUD.h"
 
 int main() {
 
@@ -16,7 +17,7 @@ int main() {
 	LevelData level;
 	Collision collision;
 	Information information;
-
+	HUD hud;
 	Menu menu;
 	LevelLoader::load(1, level);
 	player.SetPosition(level.m_player.m_position);
@@ -81,6 +82,20 @@ int main() {
 						WHITE
 					);
 				}
+			}
+			hud.Draw();
+
+			HUDChoice hudChoice = hud.Update();
+
+			if (hudChoice == HUD_BACK)
+			{
+				started = false;
+			}
+			else if (hudChoice == HUD_REPLAY)
+			{
+				LevelLoader::load(1, level);
+				player.SetPosition(level.m_player.m_position);
+				player.SetVelocity({ 0, 0 });
 			}
 		}
 			EndDrawing();
