@@ -1,5 +1,6 @@
 #pragma once
 #include "raylib.h"
+#include "GameState.h"
 #include <iostream>
 enum class PlayerState
 {
@@ -19,6 +20,7 @@ public:
 	Vector2 GetPosition();
 	Vector2 GetVelocity();
 	void SetVelocity(Vector2 t_velocity);
+	GameState gameState;
 
 private:
 	Vector2 position = { 400,500 };

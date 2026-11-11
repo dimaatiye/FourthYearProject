@@ -15,5 +15,7 @@ public:
 
     void SetStatus(GameStatus t_status);
     GameStatus GetStatus() const;
+    void Dead();
+    void Win();
 };
 

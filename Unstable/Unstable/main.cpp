@@ -70,9 +70,14 @@ int main() {
 		}
 		else
 		{
-			if(gameState.GetStatus() == ALIVE)
+			if (gameState.GetStatus() == ALIVE)
 			{
 				player.Update();
+				if (player.GetPosition().y >= 825)
+				{
+
+					gameState.SetStatus(DEAD);
+				}
 				collision.CheckPlatforms(player, level);
 				collision.CheckDisappearingPlatform(player, level);
 				player.Draw();
@@ -103,15 +108,18 @@ int main() {
 					player.SetPosition(level.m_player.m_position);
 					player.SetVelocity({ 0, 0 });
 				}
+
+				
 			}
 			else if (gameState.GetStatus() == DEAD)
 			{
-				DrawText("GAME OVER!", 400, 350, 40, RED);
-				}
+				player.Draw();  // Draw the player in their final position
+				gameState.Dead();
+			}
 			else if (gameState.GetStatus() == WIN)
 			{
-				DrawText("YOU WIN!", 400, 350, 40, GREEN);
-				}
+				gameState.Win();
+			}
 		}
 			EndDrawing();
 		

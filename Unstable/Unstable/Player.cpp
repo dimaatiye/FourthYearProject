@@ -39,10 +39,8 @@ void Player::Update()
 
 		if (position.y >= 825)
 		{
-			velocity.y = 0;
+			velocity = { 0, 0 };
 			position.y = 825;
-			DrawText(TextFormat("YOU LOSE"), 200, 80, 20, RED);
-
 		}
 		if(position.x <= 0)
 		{
