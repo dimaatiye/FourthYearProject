@@ -6,7 +6,8 @@ class Collision
 private:
 	float playerCollisionWidth = 32;
 	float playerCollisionHeight = 85;
-	float playerFeet = 30;
+	//float playerFeet = 30;
+	const float feetOffset = 30.0f;
 public:
 	void CheckPlatforms(Player& t_player, LevelData& t_level);
 	void CheckDisappearingPlatform(Player& t_player, LevelData& t_level);

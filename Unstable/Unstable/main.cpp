@@ -6,6 +6,7 @@
 #include <iostream>
 #include "Collision.h"
 #include "Menu.h"
+#include "Information.h"
 
 int main() {
 
@@ -14,12 +15,14 @@ int main() {
 	Player player;
 	LevelData level;
 	Collision collision;
+	Information information;
 
 	Menu menu;
 	LevelLoader::load(1, level);
 	player.SetPosition(level.m_player.m_position);
 	bool started = false;
 	bool ended = false;
+	bool infoScreen = false;
 	std::cout << "Player X: "<< level.m_player.m_position.x << std::endl;
 	std::cout << "Player Y: "<< level.m_player.m_position.y << std::endl;
 	std::cout << "Number of platforms: "<< level.m_platforms.size() << std::endl;
@@ -31,17 +34,33 @@ int main() {
 		ClearBackground(BLACK);
 		if (!started)
 		{
-			menu.Draw();
-
-			MenuChoice choice = menu.Update();
-
-			if (choice == START)
+			if (infoScreen)
 			{
-				started = true;
+				information.Draw();
+
+				if (information.Update())
+				{
+					infoScreen = false;
+				}
 			}
-			else if (choice == QUIT)
+			else
 			{
-				ended = true;
+				menu.Draw();
+
+				MenuChoice choice = menu.Update();
+
+				if (choice == START)
+				{
+					started = true;
+				}
+				else if (choice == QUIT)
+				{
+					ended = true;
+				}
+				else if (choice == INFO)
+				{
+					infoScreen = true;
+				}
 			}
 		}
 		else

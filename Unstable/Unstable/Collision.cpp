@@ -17,13 +17,13 @@ void Collision::CheckPlatforms(Player& t_player, LevelData& t_level)
 
                     if (velocity.y > 0)
                     {
-                        float playerFeet = playerPosition.y - playerFeet;
+                        float playerFeet = playerPosition.y - feetOffset;
                         float platformTop = platform.m_position.y;
 
                         float previousFeet = playerFeet - velocity.y;
 
                         if (previousFeet <= platformTop && playerFeet >= platformTop) {
-                            t_player.SetPosition({ playerPosition.x, platformTop + playerFeet });
+                            t_player.SetPosition({ playerPosition.x, platformTop + feetOffset });
                             t_player.SetVelocity({ 0, 0 });
                         }
                     }
