@@ -94,21 +94,6 @@ int main() {
 						);
 					}
 				}
-				hud.Draw();
-
-				HUDChoice hudChoice = hud.Update();
-
-				if (hudChoice == HUD_BACK)
-				{
-					started = false;
-				}
-				else if (hudChoice == HUD_REPLAY)
-				{
-					LevelLoader::load(1, level);
-					player.SetPosition(level.m_player.m_position);
-					player.SetVelocity({ 0, 0 });
-				}
-
 				
 			}
 			else if (gameState.GetStatus() == DEAD)
@@ -119,6 +104,21 @@ int main() {
 			else if (gameState.GetStatus() == WIN)
 			{
 				gameState.Win();
+			}
+			hud.Draw();
+
+			HUDChoice hudChoice = hud.Update();
+
+			if (hudChoice == HUD_BACK)
+			{
+				started = false;
+			}
+			else if (hudChoice == HUD_REPLAY)
+			{
+				gameState.SetStatus(ALIVE);
+				LevelLoader::load(1, level);
+				player.SetPosition(level.m_player.m_position);
+				player.SetVelocity({ 0, 0 });
 			}
 		}
 			EndDrawing();
