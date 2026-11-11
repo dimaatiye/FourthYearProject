@@ -26,6 +26,18 @@ void operator >> (const YAML::Node& t_playerNode, PlayerData& t_player)
     t_player.m_position.y = t_playerNode["position"]["y"].as<float>();
 }
 
+void operator >> (const YAML::Node& t_starNode, StarData& t_star)
+{
+	t_star.m_position.x = t_starNode["position"]["x"].as<float>();
+
+	t_star.m_position.y = t_starNode["position"]["y"].as<float>();
+
+	t_star.outerRadius = t_starNode["outerRadius"].as<float>();
+
+	t_star.innerRadius = t_starNode["innerRadius"].as<float>();
+
+    t_star.m_active = true;
+}
 
 void operator >> (const YAML::Node& t_levelNode, LevelData& t_level)
 {
@@ -40,6 +52,11 @@ void operator >> (const YAML::Node& t_levelNode, LevelData& t_level)
         PlatformData platform;
         platformsNode[i] >> platform;
         t_level.m_platforms.push_back(platform);
+    }
+
+	t_level.m_star.m_active = false; 
+    if (t_levelNode["star"]) {
+        t_levelNode["star"] >> t_level.m_star;
     }
 }
 

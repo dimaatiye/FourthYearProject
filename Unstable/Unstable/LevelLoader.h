@@ -25,6 +25,16 @@ struct PlayerData
 {
 	Vector2 m_position;
 };
+/// <summary>
+/// @brief A struct to represent star data in the level. when the player touches the star, they win the level.
+/// </summary>
+struct StarData
+{
+	Vector2 m_position;
+	float outerRadius;
+	float innerRadius;
+	bool m_active;
+};
 
 /// <summary>
 /// @brief A struct representing all the level data.
@@ -36,6 +46,8 @@ struct LevelData
 {
 	PlayerData m_player;
 	std::vector<PlatformData> m_platforms;
+	StarData m_star;
+
 };
 void TestYAML();
 /// <summary>

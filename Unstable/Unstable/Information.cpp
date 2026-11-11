@@ -9,7 +9,8 @@ void Information::Draw()
 {
 	DrawText("This is a platformer game. Use arrow keys to move and space to jump.", 100, 290, 20, WHITE);
 	DrawText("Press ESC to return to the menu.", 100, 350, 20, WHITE);
-	
+	DrawText("Press C to change Bob's color", 100, 350, 20, WHITE);
+
 	DrawRectangleRec(m_backButton, PINK);
 	DrawText("BACK", x+10, y+10, 20, BLACK);
 }

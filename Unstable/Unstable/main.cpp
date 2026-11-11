@@ -9,6 +9,7 @@
 #include "Information.h"
 #include "HUD.h"
 #include "GameState.h"
+#include "Star.h"
 
 int main() {
 
@@ -22,6 +23,7 @@ int main() {
 	Menu menu;
 	LevelLoader::load(1, level);
 	GameState gameState;
+	Star star;
 	player.SetPosition(level.m_player.m_position);
 	bool started = false;
 	bool ended = false;
@@ -72,6 +74,7 @@ int main() {
 		{
 			if (gameState.GetStatus() == ALIVE)
 			{
+				//star.DrawStar({ 550, 400 }, 40, 16, 0, YELLOW);
 				player.Update();
 				if (player.GetPosition().y >= 825)
 				{
@@ -94,6 +97,10 @@ int main() {
 						);
 					}
 				}
+				if (level.m_star.m_active)
+				{
+					star.DrawStar(level.m_star.m_position, level.m_star.outerRadius, level.m_star.innerRadius, 0, YELLOW);
+				}
 				
 			}
 			else if (gameState.GetStatus() == DEAD)
@@ -111,6 +118,10 @@ int main() {
 
 			if (hudChoice == HUD_BACK)
 			{
+				gameState.SetStatus(ALIVE);
+				LevelLoader::load(1, level);
+				player.SetPosition(level.m_player.m_position);
+				player.SetVelocity({ 0, 0 });
 				started = false;
 			}
 			else if (hudChoice == HUD_REPLAY)
