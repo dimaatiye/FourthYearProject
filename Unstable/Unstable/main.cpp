@@ -8,6 +8,7 @@
 #include "Menu.h"
 #include "Information.h"
 #include "HUD.h"
+#include "GameState.h"
 
 int main() {
 
@@ -20,6 +21,7 @@ int main() {
 	HUD hud;
 	Menu menu;
 	LevelLoader::load(1, level);
+	GameState gameState;
 	player.SetPosition(level.m_player.m_position);
 	bool started = false;
 	bool ended = false;
@@ -53,6 +55,8 @@ int main() {
 				if (choice == START)
 				{
 					started = true;
+					gameState.SetStatus(ALIVE);
+
 				}
 				else if (choice == QUIT)
 				{
@@ -66,37 +70,48 @@ int main() {
 		}
 		else
 		{
-			player.Update();
-			collision.CheckPlatforms(player, level);
-			collision.CheckDisappearingPlatform(player, level);
-			player.Draw();
-			for (const PlatformData& platform : level.m_platforms)
+			if(gameState.GetStatus() == ALIVE)
 			{
-				if (platform.m_active)
+				player.Update();
+				collision.CheckPlatforms(player, level);
+				collision.CheckDisappearingPlatform(player, level);
+				player.Draw();
+				for (const PlatformData& platform : level.m_platforms)
 				{
-					DrawRectangle(
-						(int)platform.m_position.x,
-						(int)platform.m_position.y,
-						(int)platform.m_size.x,
-						(int)platform.m_size.y,
-						WHITE
-					);
+					if (platform.m_active)
+					{
+						DrawRectangle(
+							(int)platform.m_position.x,
+							(int)platform.m_position.y,
+							(int)platform.m_size.x,
+							(int)platform.m_size.y,
+							WHITE
+						);
+					}
+				}
+				hud.Draw();
+
+				HUDChoice hudChoice = hud.Update();
+
+				if (hudChoice == HUD_BACK)
+				{
+					started = false;
+				}
+				else if (hudChoice == HUD_REPLAY)
+				{
+					LevelLoader::load(1, level);
+					player.SetPosition(level.m_player.m_position);
+					player.SetVelocity({ 0, 0 });
 				}
 			}
-			hud.Draw();
-
-			HUDChoice hudChoice = hud.Update();
-
-			if (hudChoice == HUD_BACK)
+			else if (gameState.GetStatus() == DEAD)
 			{
-				started = false;
-			}
-			else if (hudChoice == HUD_REPLAY)
+				DrawText("GAME OVER!", 400, 350, 40, RED);
+				}
+			else if (gameState.GetStatus() == WIN)
 			{
-				LevelLoader::load(1, level);
-				player.SetPosition(level.m_player.m_position);
-				player.SetVelocity({ 0, 0 });
-			}
+				DrawText("YOU WIN!", 400, 350, 40, GREEN);
+				}
 		}
 			EndDrawing();
 		
