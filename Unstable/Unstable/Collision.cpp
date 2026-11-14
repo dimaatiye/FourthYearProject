@@ -52,3 +52,21 @@ void Collision::CheckDisappearingPlatform(Player& t_player, LevelData& t_level)
         }
 	}
 }
+
+bool Collision::CheckStar(Player& t_player, LevelData& t_level)
+{
+    if (!t_level.m_star.m_active)
+    {
+        return false;
+    }
+    Vector2 playerPosition = t_player.GetPosition();
+    Rectangle playerRect = { playerPosition.x - 7, playerPosition.y - 115,playerCollisionWidth, playerCollisionHeight};
+
+    if (CheckCollisionCircleRec( t_level.m_star.m_position, t_level.m_star.outerRadius, playerRect))
+    {
+        t_level.m_star.m_active = false;
+        return true;
+    }
+
+    return false;
+}

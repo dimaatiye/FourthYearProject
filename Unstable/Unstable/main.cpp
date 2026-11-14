@@ -24,6 +24,7 @@ int main() {
 	LevelLoader::load(1, level);
 	GameState gameState;
 	Star star;
+	int score = 0;
 	player.SetPosition(level.m_player.m_position);
 	bool started = false;
 	bool ended = false;
@@ -83,6 +84,10 @@ int main() {
 				}
 				collision.CheckPlatforms(player, level);
 				collision.CheckDisappearingPlatform(player, level);
+				if (collision.CheckStar(player, level))
+				{
+					score++;
+				}
 				player.Draw();
 				for (const PlatformData& platform : level.m_platforms)
 				{
