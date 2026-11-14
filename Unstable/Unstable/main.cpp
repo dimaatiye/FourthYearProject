@@ -89,6 +89,7 @@ int main() {
 					score++;
 				}
 				player.Draw();
+				DrawText(TextFormat("Stars: %i", score), 500, 20, 25, YELLOW);
 				for (const PlatformData& platform : level.m_platforms)
 				{
 					if (platform.m_active)
@@ -128,6 +129,7 @@ int main() {
 				player.SetPosition(level.m_player.m_position);
 				player.SetVelocity({ 0, 0 });
 				started = false;
+				score = 0;
 			}
 			else if (hudChoice == HUD_REPLAY)
 			{
@@ -135,6 +137,7 @@ int main() {
 				LevelLoader::load(1, level);
 				player.SetPosition(level.m_player.m_position);
 				player.SetVelocity({ 0, 0 });
+				score = 0;
 			}
 		}
 			EndDrawing();
