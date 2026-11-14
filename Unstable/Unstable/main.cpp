@@ -132,19 +132,17 @@ int main() {
 			if (hudChoice == HUD_BACK)
 			{
 				gameState.SetStatus(ALIVE);
-				LevelLoader::load(1, level);
+				LevelLoader::load(currentLevel, level);
 				player.SetPosition(level.m_player.m_position);
 				player.SetVelocity({ 0, 0 });
 				started = false;
-				score = 0;
 			}
 			else if (hudChoice == HUD_REPLAY)
 			{
 				gameState.SetStatus(ALIVE);
-				LevelLoader::load(1, level);
+				LevelLoader::load( currentLevel, level);
 				player.SetPosition(level.m_player.m_position);
 				player.SetVelocity({ 0, 0 });
-				score = 0;
 			}
 			else if (hudChoice == HUD_NEXT_LEVEL)
 			{
