@@ -74,5 +74,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="levels\level1.yaml" />
+    <None Include="levels\level2.yaml" />
   </ItemGroup>
 </Project>

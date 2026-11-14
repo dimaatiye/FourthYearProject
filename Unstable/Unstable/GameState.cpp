@@ -29,3 +29,10 @@ void GameState::Win()
 	DrawText("YOU WIN!", 400, 350, 40, GREEN);
 
 }
+
+void GameState::LevelComplete()
+{
+	DrawRectangle(0, 0, 1100, 800, BLACK);
+	DrawText("LEVEL COMPLETE!", 350, 300, 40, GREEN);
+	DrawText("You collected the star!", 390, 370, 25, WHITE);
+}

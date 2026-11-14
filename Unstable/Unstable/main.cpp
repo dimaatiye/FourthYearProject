@@ -21,7 +21,8 @@ int main() {
 	Information information;
 	HUD hud;
 	Menu menu;
-	LevelLoader::load(1, level);
+	int currentLevel = 1;
+	LevelLoader::load(currentLevel, level);
 	GameState gameState;
 	Star star;
 	int score = 0;
@@ -87,6 +88,7 @@ int main() {
 				if (collision.CheckStar(player, level))
 				{
 					score++;
+					gameState.SetStatus(LEVEL_COMPLETE);
 				}
 				player.Draw();
 				DrawText(TextFormat("Stars: %i", score), 500, 20, 25, YELLOW);
@@ -118,9 +120,14 @@ int main() {
 			{
 				gameState.Win();
 			}
-			hud.Draw();
-
-			HUDChoice hudChoice = hud.Update();
+			else if( gameState.GetStatus() == LEVEL_COMPLETE)
+			{
+				player.Draw();  // Draw the player in their final position
+				gameState.LevelComplete();
+			}
+			bool levelComplete = (gameState.GetStatus() == LEVEL_COMPLETE);
+			hud.Draw(levelComplete);
+			HUDChoice hudChoice = hud.Update(levelComplete);
 
 			if (hudChoice == HUD_BACK)
 			{
@@ -138,6 +145,17 @@ int main() {
 				player.SetPosition(level.m_player.m_position);
 				player.SetVelocity({ 0, 0 });
 				score = 0;
+			}
+			else if (hudChoice == HUD_NEXT_LEVEL)
+			{
+				currentLevel++;
+
+				LevelLoader::load(currentLevel, level);
+
+				player.SetPosition(level.m_player.m_position);
+				player.SetVelocity({ 0, 0 });
+
+				gameState.SetStatus(ALIVE);
 			}
 		}
 			EndDrawing();

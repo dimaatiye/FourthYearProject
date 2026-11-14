@@ -3,7 +3,8 @@ enum GameStatus
 {
     ALIVE,
     DEAD,
-    WIN
+    WIN,
+    LEVEL_COMPLETE
 };
 class GameState
 {
@@ -17,5 +18,6 @@ public:
     GameStatus GetStatus() const;
     void Dead();
     void Win();
+    void LevelComplete();
 };
 

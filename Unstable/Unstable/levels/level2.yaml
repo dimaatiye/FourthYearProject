@@ -1,0 +1,17 @@
+
+player:
+    position: { x: 40, y: 700 }
+
+platforms:
+    - type: platform
+      position: { x: 0, y: 720 }
+      size: { x: 100, y: 20 }
+
+
+
+level: 2
+
+star:
+    position: { x: 1040, y: 700 }
+    outerRadius: 40
+    innerRadius: 20
