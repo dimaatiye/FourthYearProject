@@ -16,6 +16,12 @@ struct PlatformData
 
 	bool m_active = true;
 	bool m_triggered = false;
+	Vector2 m_startPosition;
+	Vector2 m_endPosition;
+	float m_speed = 2.0f;
+	int m_direction = 1;
+	bool m_playerStandingOnPlatform = false;
+
 };
 
 /// <summary>

@@ -9,5 +9,6 @@ public:
 
 private:
 	void UpdateDisappearingPlatforms(Player& t_player, LevelData& t_level);
+	void UpdateMovingPlatforms(Player& t_player, LevelData& t_level);
 };
 

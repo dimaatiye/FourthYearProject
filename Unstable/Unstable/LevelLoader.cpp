@@ -16,6 +16,19 @@ void operator >> (const YAML::Node& t_platformNode, PlatformData& t_platform)
 
     t_platform.m_size.y = t_platformNode["size"]["y"].as<float>();
 
+    if (t_platform.m_type == "moving")
+    {
+        t_platform.m_startPosition = t_platform.m_position;
+
+        t_platform.m_endPosition = Vector2{
+            t_platformNode["endPosition"]["x"].as<float>(),
+            t_platformNode["endPosition"]["y"].as<float>()
+        };
+
+        t_platform.m_speed = t_platformNode["speed"].as<float>();
+        t_platform.m_direction = 1;
+    }
+
 }
 
 

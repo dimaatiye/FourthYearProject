@@ -7,8 +7,11 @@ platforms:
       position: { x: 0, y: 720 }
       size: { x: 100, y: 20 }
 
-
-
+    - type: moving
+      position: { x: 150, y: 600 }
+      size: { x: 100, y: 20 }
+      endPosition: { x: 400, y: 600 }
+      speed: 2
 level: 2
 
 star:
