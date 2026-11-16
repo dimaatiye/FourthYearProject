@@ -8,13 +8,53 @@ platforms:
       size: { x: 100, y: 20 }
 
     - type: moving
-      position: { x: 150, y: 600 }
+      position: { x: 150, y: 650 }
       size: { x: 100, y: 20 }
-      endPosition: { x: 400, y: 600 }
+      endPosition: { x: 350, y: 650 }
       speed: 2
+    - type: moving
+      position: { x: 650, y: 620 }
+      size: { x: 100, y: 20 }
+      endPosition: { x: 900, y: 620 }
+      speed: 1.5
+    - type: moving
+      position: { x: 350, y: 570 }
+      size: { x: 100, y: 20 }
+      endPosition: { x: 550, y: 570 }
+      speed: 1
+    - type: moving
+      position: { x: 700, y: 520 }
+      size: { x: 100, y: 20 }
+      endPosition: { x: 950, y: 520 }
+      speed: 2.5
+    - type: moving
+      position: { x: 200, y: 480 }
+      size: { x: 100, y: 20 }
+      endPosition: { x: 450, y: 480 }
+      speed: 1.5
+    - type: moving
+      position: { x: 50, y: 390 }
+      size: { x: 100, y: 20 }
+      endPosition: { x: 300, y: 390 }
+      speed: 2
+    - type: moving
+      position: { x: 450, y: 350 }
+      size: { x: 100, y: 20 }
+      endPosition: { x: 650, y: 350 }
+      speed: 1
+    - type: moving
+      position: { x: 750, y: 300 }
+      size: { x: 100, y: 20 }
+      endPosition: { x: 1000, y: 300 }
+      speed: 2
+    - type: moving
+      position: { x: 300, y: 220 }
+      size: { x: 100, y: 20 }
+      endPosition: { x: 550, y: 220 }
+      speed: 1.5
 level: 2
 
 star:
-    position: { x: 1040, y: 700 }
+    position: { x: 1040, y: 150 }
     outerRadius: 40
     innerRadius: 20
