@@ -102,13 +102,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>YAML_CPP_STATIC_DEFINE</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\YAML\yaml-cpp\include;C:\raylib-5.5_win64_msvc16\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\dimaa\Desktop\year4 project\Unstable\FourthYearProject\Unstable\Unstable\x64\raylib-6.2_win64_msvc16\include;C:\YAML\yaml-cpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\YAML\yaml-cpp\build-v143\Debug;C:\raylib-5.5_win64_msvc16\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\YAML\yaml-cpp\build-v143\Debug;C:\Users\dimaa\Desktop\year4 project\Unstable\FourthYearProject\Unstable\Unstable\x64\raylib-6.2_win64_msvc16\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>yaml-cppd.lib;raylib.lib;winmm.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>

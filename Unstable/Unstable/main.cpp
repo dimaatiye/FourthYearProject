@@ -22,7 +22,7 @@ int main() {
 	Information information;
 	HUD hud;
 	Menu menu;
-	int currentLevel = 2;
+	int currentLevel = 1;
 	LevelLoader::load(currentLevel, level);
 	GameState gameState;
 	Star star;
