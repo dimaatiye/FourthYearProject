@@ -138,6 +138,7 @@
     <ClInclude Include="LevelLoader.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="PlatformManager.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Star.h" />
   </ItemGroup>
@@ -149,6 +150,7 @@
     <ClCompile Include="LevelLoader.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="PlatformManager.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Star.cpp" />
   </ItemGroup>

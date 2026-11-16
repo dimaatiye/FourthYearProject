@@ -10,7 +10,6 @@ private:
 	const float feetOffset = 30.0f;
 public:
 	void CheckPlatforms(Player& t_player, LevelData& t_level);
-	void CheckDisappearingPlatform(Player& t_player, LevelData& t_level);
 	bool CheckStar(Player& t_player, LevelData& t_level);
 };
 

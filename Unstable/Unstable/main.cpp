@@ -10,6 +10,7 @@
 #include "HUD.h"
 #include "GameState.h"
 #include "Star.h"
+#include "PlatformManager.h"
 
 int main() {
 
@@ -25,6 +26,7 @@ int main() {
 	LevelLoader::load(currentLevel, level);
 	GameState gameState;
 	Star star;
+	PlatformManager platformManager;
 	int score = 0;
 	player.SetPosition(level.m_player.m_position);
 	bool started = false;
@@ -84,7 +86,7 @@ int main() {
 					gameState.SetStatus(DEAD);
 				}
 				collision.CheckPlatforms(player, level);
-				collision.CheckDisappearingPlatform(player, level);
+				platformManager.Update(player, level);
 				if (collision.CheckStar(player, level))
 				{
 					score++;
