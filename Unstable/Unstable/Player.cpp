@@ -134,28 +134,28 @@ void Player::Draw()
 
 void Player::DrawBody()
 {
-	DrawRectangle(position.x + 2, position.y - 115, 15, 15, drawColor);// head
-	DrawRectangle(position.x - 7, position.y - 100, 32, 50, drawColor);//boddy
-	DrawRectangle(position.x + 15, position.y - 60, 10, 30, drawColor); // right leg
-	DrawRectangle(position.x - 7, position.y - 60, 10, 30, drawColor);// left leg
+	DrawPart(2, -115, 15, 15);  // Head
+	DrawPart(-7, -100, 32, 50); // Body
+	DrawPart(15, -60, 10, 30);  // Right leg
+	DrawPart(-7, -60, 10, 30);  // Left leg
 }
 
 void Player::DrawIdle()
 {
 	//DrawBody();
-	if ((frame / 10) % 2 == 0)//switch between two animation frames every 10 frames
+	if ((frame / 10) % 2 == 0)
 	{
-		DrawRectangle(position.x + 2, position.y - 115, 15, 15, drawColor);// head
-		DrawRectangle(position.x - 7, position.y - 100, 32, 50, drawColor);//boddy
-		DrawRectangle(position.x + 15, position.y - 60, 10, 30, drawColor); // right leg
-		DrawRectangle(position.x - 7, position.y - 60, 10, 30, drawColor);// left leg
+		DrawPart(2, -115, 15, 15);
+		DrawPart(-7, -100, 32, 50);
+		DrawPart(15, -60, 10, 30);
+		DrawPart(-7, -60, 10, 30);
 	}
 	else
 	{
-		DrawRectangle(position.x + 2, position.y - 105, 15, 15, drawColor);// head
-		DrawRectangle(position.x - 7, position.y - 90, 32, 50, drawColor);//boddy
-		DrawRectangle(position.x + 15, position.y - 50, 10, 20, drawColor); // right leg
-		DrawRectangle(position.x - 7, position.y - 50, 10, 20, drawColor);// left leg
+		DrawPart(2, -105, 15, 15);
+		DrawPart(-7, -90, 32, 50);
+		DrawPart(15, -50, 10, 20);
+		DrawPart(-7, -50, 10, 20);
 	}
 	
 }
@@ -182,20 +182,36 @@ void Player::DrawWalkRight()
 
 void Player::DrawWalking()
 {
-	if ((frame / 10) % 2 == 0)//switch between two animation frames every 10 frames
+	if ((frame / 10) % 2 == 0)//animation chnages every 10 frames
 	{
-		DrawRectangle(position.x + 2, position.y - 115, 15, 15, drawColor);// head
-		DrawRectangle(position.x - 7, position.y - 100, 32, 50, drawColor);//boddy
-		DrawRectangle(position.x + 15, position.y - 60, 10, 30, drawColor); // right leg
-		DrawRectangle(position.x - 7, position.y - 60, 10, 20, drawColor);// left leg
+		DrawPart(2, -115, 15, 15);
+		DrawPart(-7, -100, 32, 50);
+		DrawPart(15, -60, 10, 30);
+		DrawPart(-7, -60, 10, 20);
 	}
 	else
 	{
-		DrawRectangle(position.x + 2, position.y - 115, 15, 15, drawColor);// head
-		DrawRectangle(position.x - 7, position.y - 100, 32, 50, drawColor);//boddy
-		DrawRectangle(position.x + 15, position.y - 60, 10, 20, drawColor); // right leg
-		DrawRectangle(position.x - 7, position.y - 60, 10, 30, drawColor);// left leg
+		DrawPart(2, -115, 15, 15);
+		DrawPart(-7, -100, 32, 50);
+		DrawPart(15, -60, 10, 20);
+		DrawPart(-7, -60, 10, 30);
 	}
+}
+
+void Player::DrawPart(float t_xOffset, float t_yOffset, float t_width, float t_height)
+{
+	float drawY;
+
+	if (gravityDirection == 1.0f)//if gravity is normal, draw the player normally
+	{
+		drawY = position.y + t_yOffset;
+	}
+	else // if the gravity is -1 its upside down
+	{
+		drawY = position.y - 145 - t_yOffset - t_height;//145 is totla hight
+	}
+
+	DrawRectangle((int)(position.x + t_xOffset),(int)drawY,(int)t_width,(int)t_height,drawColor);
 }
 
 void Player::SetPosition(Vector2 t_position)

@@ -44,6 +44,7 @@ private:
 	void DrawWalkLeft();
 	void DrawWalkRight();
 	void DrawWalking();
+	void DrawPart(float t_xOffset, float t_yOffset, float t_width, float t_height);
 	float gravityDirection = 1.0f;
 	bool canSwitchGravity = false;
 	int frame = 0;
