@@ -1,0 +1,22 @@
+
+player:
+    position: { x: 40, y: 700 }
+
+platforms:
+    - type: platform
+      position: { x: 0, y: 720 }
+      size: { x: 100, y: 20 }
+
+  
+level: 3
+
+star:
+    position: { x: 1040, y: 150 }
+    outerRadius: 40
+    innerRadius: 20
+enemies:
+  - position: { x: 60, y: 380  }
+    endPosition: { x: 300, y: 380}
+    radius: 10
+    speed: 1
+gravityDirection: -1.0

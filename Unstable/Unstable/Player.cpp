@@ -34,13 +34,23 @@ void Player::Update()
 	}
 	else {
 		//game starts after the player pressess enter
-		velocity.y += gravity;
+		velocity.y += gravity * gravityDirection;
 		position.y += velocity.y;
-
-		if (position.y >= 825)
+		if(gravityDirection < 0)
 		{
-			velocity = { 0, 0 };
-			position.y = 825;
+			if (position.y <= 0)
+			{
+				velocity = { 0, 0 };
+				position.y = 0;
+			}
+		}
+		else
+		{
+			if (position.y >= 825)
+			{
+				velocity = { 0, 0 };
+				position.y = 825;
+			}
 		}
 		if(position.x <= 0)
 		{
@@ -57,6 +67,7 @@ void Player::Update()
 
 		if (IsKeyPressed(KEY_SPACE) )
 		{
+			velocity.y = jumpForce * gravityDirection;
 			state = PlayerState::Jumping;
 			std::cout << "player jumping " << std::endl;
 
@@ -141,7 +152,6 @@ void Player::DrawIdle()
 void Player::DrawJumping()
 {
 	DrawBody();
-	velocity.y += jumpForce;
 }
 
 void Player::DrawWalkLeft()
@@ -194,6 +204,12 @@ Vector2 Player::GetVelocity()
 void Player::SetVelocity(Vector2 t_velocity)
 {
 	velocity = t_velocity;		
+}
+
+void Player::SetGravityDirection(float t_direction)
+{
+	gravityDirection = t_direction;
+
 }
 
 

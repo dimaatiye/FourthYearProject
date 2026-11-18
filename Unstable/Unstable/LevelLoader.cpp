@@ -69,6 +69,14 @@ void operator >> (const YAML::Node& t_enemyNode, EnemyData& t_enemy)
 void operator >> (const YAML::Node& t_levelNode, LevelData& t_level)
 {
     t_levelNode["player"] >> t_level.m_player;
+    if (t_levelNode["gravityDirection"])
+    {
+        t_level.m_gravityDirection = t_levelNode["gravityDirection"].as<float>();
+    }
+    else
+    {
+        t_level.m_gravityDirection = 1.0f;
+    }
 
     const YAML::Node& platformsNode = t_levelNode["platforms"];
 
@@ -86,15 +94,18 @@ void operator >> (const YAML::Node& t_levelNode, LevelData& t_level)
         t_levelNode["star"] >> t_level.m_star;
     }
 
-    const YAML::Node& enemiesNode = t_levelNode["enemies"];
 
     t_level.m_enemies.clear();
-
-    for (unsigned int i = 0; i < enemiesNode.size(); ++i)
+    if (t_levelNode["enemies"])
     {
-        EnemyData enemy;
-        enemiesNode[i] >> enemy;
-        t_level.m_enemies.push_back(enemy);
+        const YAML::Node& enemiesNode = t_levelNode["enemies"];
+
+        for (unsigned int i = 0; i < enemiesNode.size(); ++i)
+        {
+            EnemyData enemy;
+            enemiesNode[i] >> enemy;
+            t_level.m_enemies.push_back(enemy);
+        }
     }
 }
 

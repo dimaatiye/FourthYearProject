@@ -68,6 +68,7 @@ struct LevelData
 	std::vector<PlatformData> m_platforms;
 	StarData m_star;
 	std::vector<EnemyData> m_enemies;
+	float m_gravityDirection = 1.0f;
 
 };
 void TestYAML();

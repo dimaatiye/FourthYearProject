@@ -23,8 +23,9 @@ int main() {
 	Information information;
 	HUD hud;
 	Menu menu;
-	int currentLevel = 2;
+	int currentLevel = 1;
 	LevelLoader::load(currentLevel, level);
+	player.SetGravityDirection(level.m_gravityDirection);
 	GameState gameState;
 	Star star;
 	PlatformManager platformManager;
@@ -154,6 +155,7 @@ int main() {
 			{
 				gameState.SetStatus(ALIVE);
 				LevelLoader::load(currentLevel, level);
+				player.SetGravityDirection(level.m_gravityDirection);
 				player.SetPosition(level.m_player.m_position);
 				player.SetVelocity({ 0, 0 });
 				started = false;
@@ -162,6 +164,7 @@ int main() {
 			{
 				gameState.SetStatus(ALIVE);
 				LevelLoader::load( currentLevel, level);
+				player.SetGravityDirection(level.m_gravityDirection);
 				player.SetPosition(level.m_player.m_position);
 				player.SetVelocity({ 0, 0 });
 			}
@@ -170,6 +173,7 @@ int main() {
 				currentLevel++;
 
 				LevelLoader::load(currentLevel, level);
+				player.SetGravityDirection(level.m_gravityDirection);
 
 				player.SetPosition(level.m_player.m_position);
 				player.SetVelocity({ 0, 0 });

@@ -21,7 +21,7 @@ public:
 	Vector2 GetVelocity();
 	void SetVelocity(Vector2 t_velocity);
 	GameState gameState;
-
+	void SetGravityDirection(float t_direction);
 private:
 	Vector2 position = { 400,500 };
 	Vector2 velocity = { 0,0 };
@@ -43,7 +43,7 @@ private:
 	void DrawWalkLeft();
 	void DrawWalkRight();
 	void DrawWalking();
-
+	float gravityDirection = 1.0f;
 	int frame = 0;
 };
 
