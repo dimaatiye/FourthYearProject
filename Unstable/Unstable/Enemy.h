@@ -11,6 +11,7 @@ private:
 
 public:
     Enemy(EnemyData m_data);
+    bool CheckCollision(Vector2 t_playerPosition);
     void Update();
     void Draw();
 };

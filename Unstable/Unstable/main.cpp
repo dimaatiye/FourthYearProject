@@ -125,6 +125,10 @@ int main() {
 				for (Enemy& enemy : enemies)
 				{
 					enemy.Draw();
+					if (enemy.CheckCollision(player.GetPosition()))
+					{
+						gameState.SetStatus(DEAD);
+					}
 				}
 				
 			}
