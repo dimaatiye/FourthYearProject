@@ -22,6 +22,7 @@ public:
 	void SetVelocity(Vector2 t_velocity);
 	GameState gameState;
 	void SetGravityDirection(float t_direction);
+	void SetGravitySwitchEnabled(bool t_enabled);
 private:
 	Vector2 position = { 400,500 };
 	Vector2 velocity = { 0,0 };
@@ -44,6 +45,7 @@ private:
 	void DrawWalkRight();
 	void DrawWalking();
 	float gravityDirection = 1.0f;
+	bool canSwitchGravity = false;
 	int frame = 0;
 };
 

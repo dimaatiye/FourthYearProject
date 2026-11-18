@@ -38,10 +38,10 @@ void Player::Update()
 		position.y += velocity.y;
 		if(gravityDirection < 0)
 		{
-			if (position.y <= 0)
+			if (position.y <= 115)
 			{
 				velocity = { 0, 0 };
-				position.y = 0;
+				position.y = 115;
 			}
 		}
 		else
@@ -67,7 +67,18 @@ void Player::Update()
 
 		if (IsKeyPressed(KEY_SPACE) )
 		{
-			velocity.y = jumpForce * gravityDirection;
+			if (canSwitchGravity)
+			{
+				// Level 3: Switch gravity direction
+				gravityDirection *= -1.0f;
+				velocity.y = 0;
+			}
+			else
+			{
+				// Levels 1 and 2: Normal jumping
+				velocity.y = jumpForce;
+			}
+
 			state = PlayerState::Jumping;
 			std::cout << "player jumping " << std::endl;
 
@@ -209,6 +220,12 @@ void Player::SetVelocity(Vector2 t_velocity)
 void Player::SetGravityDirection(float t_direction)
 {
 	gravityDirection = t_direction;
+
+}
+
+void Player::SetGravitySwitchEnabled(bool t_enabled)
+{
+	canSwitchGravity = t_enabled;
 
 }
 

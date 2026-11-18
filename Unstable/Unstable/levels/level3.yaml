@@ -19,4 +19,4 @@ enemies:
     endPosition: { x: 300, y: 380}
     radius: 10
     speed: 1
-gravityDirection: -1.0
+gravityDirection: 1.0
