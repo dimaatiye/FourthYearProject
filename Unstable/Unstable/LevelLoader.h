@@ -41,6 +41,20 @@ struct StarData
 	float innerRadius;
 	bool m_active;
 };
+/// <summary>
+/// @brief A struct representing all the enemies
+/// 
+/// enemy one is a circle with spikes
+/// </summary>
+struct EnemyData
+{
+	Vector2 m_position;
+	Vector2 m_startPosition;
+	Vector2 m_endPosition;
+	float m_radius;
+	float m_speed = 2.0f;
+	int m_direction = 1;
+};
 
 /// <summary>
 /// @brief A struct representing all the level data.
@@ -53,6 +67,7 @@ struct LevelData
 	PlayerData m_player;
 	std::vector<PlatformData> m_platforms;
 	StarData m_star;
+	std::vector<EnemyData> m_enemies;
 
 };
 void TestYAML();

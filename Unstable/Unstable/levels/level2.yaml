@@ -58,3 +58,6 @@ star:
     position: { x: 1040, y: 150 }
     outerRadius: 40
     innerRadius: 20
+enemies:
+    - position: { x: 500, y: 650 }
+      radius: 25
