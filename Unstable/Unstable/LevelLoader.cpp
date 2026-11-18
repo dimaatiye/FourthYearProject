@@ -51,7 +51,21 @@ void operator >> (const YAML::Node& t_starNode, StarData& t_star)
 
     t_star.m_active = true;
 }
+void operator >> (const YAML::Node& t_enemyNode, EnemyData& t_enemy)
+{
+    t_enemy.m_position.x = t_enemyNode["position"]["x"].as<float>();
+    t_enemy.m_position.y = t_enemyNode["position"]["y"].as<float>();
 
+    t_enemy.m_startPosition = t_enemy.m_position;
+
+    t_enemy.m_endPosition.x = t_enemyNode["endPosition"]["x"].as<float>();
+    t_enemy.m_endPosition.y = t_enemyNode["endPosition"]["y"].as<float>();
+
+    t_enemy.m_radius = t_enemyNode["radius"].as<float>();
+    t_enemy.m_speed = t_enemyNode["speed"].as<float>();
+
+    t_enemy.m_direction = 1;
+}
 void operator >> (const YAML::Node& t_levelNode, LevelData& t_level)
 {
     t_levelNode["player"] >> t_level.m_player;
@@ -82,22 +96,6 @@ void operator >> (const YAML::Node& t_levelNode, LevelData& t_level)
         enemiesNode[i] >> enemy;
         t_level.m_enemies.push_back(enemy);
     }
-}
-
-void operator >> (const YAML::Node& t_enemyNode, EnemyData& t_enemy)
-{
-    t_enemy.m_position.x = t_enemyNode["position"]["x"].as<float>();
-    t_enemy.m_position.y = t_enemyNode["position"]["y"].as<float>();
-
-    t_enemy.m_startPosition = t_enemy.m_position;
-
-    t_enemy.m_endPosition.x = t_enemyNode["endPosition"]["x"].as<float>();
-    t_enemy.m_endPosition.y = t_enemyNode["endPosition"]["y"].as<float>();
-
-    t_enemy.m_radius = t_enemyNode["radius"].as<float>();
-    t_enemy.m_speed = t_enemyNode["speed"].as<float>();
-
-    t_enemy.m_direction = 1;
 }
 
 void LevelLoader::load(int t_levelNum, LevelData& t_level)

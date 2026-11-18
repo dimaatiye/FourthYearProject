@@ -59,5 +59,7 @@ star:
     outerRadius: 40
     innerRadius: 20
 enemies:
-    - position: { x: 500, y: 650 }
-      radius: 25
+  - position: { x: 59, y: 380  }
+    endPosition: { x: 300, y: 380}
+    radius: 10
+    speed: 1

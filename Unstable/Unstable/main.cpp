@@ -11,7 +11,8 @@
 #include "GameState.h"
 #include "Star.h"
 #include "PlatformManager.h"
-
+#include "Enemy.h"
+#include <vector>
 int main() {
 
 	InitWindow(1100, 800, "Unstable");
@@ -22,11 +23,17 @@ int main() {
 	Information information;
 	HUD hud;
 	Menu menu;
-	int currentLevel = 1;
+	int currentLevel = 2;
 	LevelLoader::load(currentLevel, level);
 	GameState gameState;
 	Star star;
 	PlatformManager platformManager;
+	std::vector<Enemy> enemies;
+	for (const EnemyData& enemyData : level.m_enemies)
+	{
+		enemies.emplace_back(enemyData);
+	}
+
 	int score = 0;
 	player.SetPosition(level.m_player.m_position);
 	bool started = false;
@@ -87,6 +94,10 @@ int main() {
 				}
 				collision.CheckPlatforms(player, level);
 				platformManager.Update(player, level);
+				for (Enemy& enemy : enemies)
+				{
+					enemy.Update();
+				}
 				if (collision.CheckStar(player, level))
 				{
 					score++;
@@ -110,6 +121,10 @@ int main() {
 				if (level.m_star.m_active)
 				{
 					star.DrawStar(level.m_star.m_position, level.m_star.outerRadius, level.m_star.innerRadius, 0, YELLOW);
+				}
+				for (Enemy& enemy : enemies)
+				{
+					enemy.Draw();
 				}
 				
 			}
