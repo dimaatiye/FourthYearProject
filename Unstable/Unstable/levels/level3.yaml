@@ -6,12 +6,39 @@ platforms:
     - type: platform
       position: { x: 0, y: 720 }
       size: { x: 100, y: 20 }
+    - type: platform
+      position: { x: 200, y: 720 }
+      size: { x: 100, y: 20 }
+    - type: disappearing
+      position: { x: 400, y: 720 }
+      size: { x: 100, y: 20 }
+    - type: platform
+      position: { x: 600, y: 720 }
+      size: { x: 100, y: 20 }
+    - type: disappearing
+      position: { x: 800, y: 720 }
+      size: { x: 100, y: 20 }
 
+    - type: platform
+      position: { x: 0, y: 70 }
+      size: { x: 100, y: 20 }
+    - type: platform
+      position: { x: 300, y: 70 }
+      size: { x: 100, y: 20 }
+    - type: platform
+      position: { x: 500, y: 70 }
+      size: { x: 100, y: 20 }
+    - type: platform
+      position: { x: 700, y: 70 }
+      size: { x: 100, y: 20 }
+    - type: platform
+      position: { x: 900, y: 70 }
+      size: { x: 100, y: 20 }
   
 level: 3
 
 star:
-    position: { x: 1040, y: 150 }
+    position: { x: 1040, y: 400 }
     outerRadius: 40
     innerRadius: 20
 enemies:

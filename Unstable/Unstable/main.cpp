@@ -23,7 +23,7 @@ int main() {
 	Information information;
 	HUD hud;
 	Menu menu;
-	int currentLevel = 1;
+	int currentLevel = 3;
 	LevelLoader::load(currentLevel, level);
 	player.SetGravityDirection(level.m_gravityDirection);
 	player.SetGravitySwitchEnabled(currentLevel == 3);
@@ -94,6 +94,12 @@ int main() {
 
 					gameState.SetStatus(DEAD);
 				}
+				if (player.GetPosition().y <= 115)
+				{
+
+					gameState.SetStatus(DEAD);
+				}
+
 				collision.CheckPlatforms(player, level);
 				platformManager.Update(player, level);
 				for (Enemy& enemy : enemies)

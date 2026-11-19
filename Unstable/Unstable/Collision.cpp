@@ -34,8 +34,23 @@ void Collision::CheckPlatforms(Player& t_player, LevelData& t_level)
 
                         }
                     }
+                    else if (velocity.y < 0)
+                    {
+                        float playerHead = playerPosition.y - 115;
+                        float platformBottom = platform.m_position.y + platform.m_size.y;
+
+                        float previousHead = playerHead - velocity.y;
+
+                        if (previousHead >= platformBottom && playerHead <= platformBottom)
+                        {
+                            t_player.SetPosition({ playerPosition.x, platformBottom + 115 });
+                            t_player.SetVelocity({ 0, 0 });
+                            platform.m_playerStandingOnPlatform = true;
+                        }
+                    }
                 }
             }
+
         
     
     }
