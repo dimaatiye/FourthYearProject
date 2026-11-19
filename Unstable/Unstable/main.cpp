@@ -23,7 +23,7 @@ int main() {
 	Information information;
 	HUD hud;
 	Menu menu;
-	int currentLevel = 3;
+	int currentLevel = 1;
 	LevelLoader::load(currentLevel, level);
 	player.SetGravityDirection(level.m_gravityDirection);
 	player.SetGravitySwitchEnabled(currentLevel == 3);
@@ -156,6 +156,13 @@ int main() {
 			{
 				gameState.SetStatus(ALIVE);
 				LevelLoader::load(currentLevel, level);
+				enemies.clear();
+
+				for (const EnemyData& enemyData : level.m_enemies)
+				{
+					enemies.emplace_back(enemyData);
+				}
+
 				player.SetGravityDirection(level.m_gravityDirection);
 				player.SetGravitySwitchEnabled(currentLevel == 3);
 				player.SetPosition(level.m_player.m_position);
@@ -166,6 +173,13 @@ int main() {
 			{
 				gameState.SetStatus(ALIVE);
 				LevelLoader::load( currentLevel, level);
+				enemies.clear();
+
+				for (const EnemyData& enemyData : level.m_enemies)
+				{
+					enemies.emplace_back(enemyData);
+				}
+
 				player.SetGravityDirection(level.m_gravityDirection);
 				player.SetGravitySwitchEnabled(currentLevel == 3);
 				player.SetPosition(level.m_player.m_position);
@@ -176,6 +190,13 @@ int main() {
 				currentLevel++;
 
 				LevelLoader::load(currentLevel, level);
+				enemies.clear();
+
+				for (const EnemyData& enemyData : level.m_enemies)
+				{
+					enemies.emplace_back(enemyData);
+				}
+
 				player.SetGravityDirection(level.m_gravityDirection);
 				player.SetGravitySwitchEnabled(currentLevel == 3);
 				player.SetPosition(level.m_player.m_position);
