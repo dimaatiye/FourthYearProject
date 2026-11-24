@@ -70,6 +70,14 @@ void operator >> (const YAML::Node& t_enemyNode, EnemyData& t_enemy)
 
     t_enemy.m_direction = 1;
 }
+void operator >> (const YAML::Node& t_followerNode, FollowerEnemyData& t_follower)
+{
+    t_follower.m_position.x = t_followerNode["position"]["x"].as<float>();
+    t_follower.m_position.y = t_followerNode["position"]["y"].as<float>();
+    t_follower.m_speed = t_followerNode["speed"].as<float>();
+    t_follower.m_size = t_followerNode["size"].as<float>(40.0f);              
+    t_follower.m_sightRange = t_followerNode["sightRange"].as<float>(400.0f); 
+}
 void operator >> (const YAML::Node& t_levelNode, LevelData& t_level)
 {
     t_levelNode["player"] >> t_level.m_player;
@@ -105,6 +113,18 @@ void operator >> (const YAML::Node& t_levelNode, LevelData& t_level)
             EnemyData enemy;
             enemiesNode[i] >> enemy;
             t_level.m_enemies.push_back(enemy);
+        }
+    }
+    t_level.m_followers.clear();
+    if (t_levelNode["followers"])
+    {
+        const YAML::Node& followersNode = t_levelNode["followers"];
+
+        for (unsigned int i = 0; i < followersNode.size(); ++i)
+        {
+            FollowerEnemyData follower;
+            followersNode[i] >> follower;
+            t_level.m_followers.push_back(follower);
         }
     }
 }

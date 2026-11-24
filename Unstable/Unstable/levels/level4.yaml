@@ -28,12 +28,19 @@ platforms:
       size: { x: 1000, y: 20 }
 
   
-level: 3
+level: 4
 
 star:
     position: { x: 1040, y: 680 }
     outerRadius: 40
     innerRadius: 20
-enemies:
+followers:
+    - position: { x: 200, y: 680 }   # on the platform at y 720, size 40
+      speed: 2
+      size: 40
+      sightRange: 500
+
+    - position: { x: 600, y: 570 }   # on the platform at y 610
+      speed: 3.5
 
 gravityDirection: 1.0

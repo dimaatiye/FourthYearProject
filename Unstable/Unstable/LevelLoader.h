@@ -55,7 +55,18 @@ struct EnemyData
 	float m_speed = 2.0f;
 	int m_direction = 1;
 };
-
+/// <summary>
+/// @brief A struct representing all the enemies
+/// 
+/// enemy two is what follows the player
+/// </summary>
+struct FollowerEnemyData
+{
+	Vector2 m_position;   
+	float m_size;
+	float m_speed;
+	float m_sightRange;
+};
 /// <summary>
 /// @brief A struct representing all the level data.
 /// 
@@ -69,6 +80,7 @@ struct LevelData
 	StarData m_star;
 	std::vector<EnemyData> m_enemies;
 	float m_gravityDirection = 1.0f;
+	std::vector<FollowerEnemyData> m_followers;
 
 };
 void TestYAML();
