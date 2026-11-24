@@ -23,7 +23,7 @@ int main() {
 	Information information;
 	HUD hud;
 	Menu menu;
-	int currentLevel = 3;
+	int currentLevel = 4;
 	LevelLoader::load(currentLevel, level);
 	player.SetGravityDirection(level.m_gravityDirection);
 	player.SetGravitySwitchEnabled(currentLevel == 3);
@@ -128,7 +128,7 @@ int main() {
 				}
 				if (level.m_star.m_active)
 				{
-					star.DrawStar(level.m_star.m_position, level.m_star.outerRadius, level.m_star.innerRadius, 0, YELLOW);
+					star.DrawStar(level.m_star.m_position, level.m_star.outerRadius, level.m_star.innerRadius, YELLOW);
 				}
 				for (Enemy& enemy : enemies)
 				{
@@ -142,7 +142,7 @@ int main() {
 			}
 			else if (gameState.GetStatus() == DEAD)
 			{
-				player.Draw();  // Draw the player in their final position
+			//	player.Draw();  // Draw the player in their final position
 				gameState.Dead();
 			}
 			else if (gameState.GetStatus() == WIN)
@@ -151,7 +151,7 @@ int main() {
 			}
 			else if( gameState.GetStatus() == LEVEL_COMPLETE)
 			{
-				player.Draw();  // Draw the player in their final position
+				//player.Draw();  // Draw the player in their final position
 				gameState.LevelComplete();
 			}
 			bool levelComplete = (gameState.GetStatus() == LEVEL_COMPLETE);
@@ -175,7 +175,7 @@ int main() {
 				player.SetVelocity({ 0, 0 });
 				started = false;
 			}
-			else if (hudChoice == HUD_REPLAY)
+			else if (hudChoice == HUD_REPLAY || IsKeyPressed(KEY_R))
 			{
 				gameState.SetStatus(ALIVE);
 				LevelLoader::load( currentLevel, level);

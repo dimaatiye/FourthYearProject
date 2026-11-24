@@ -20,28 +20,26 @@ void Collision::CheckPlatforms(Player& t_player, LevelData& t_level)
                 {
                     Vector2 velocity = t_player.GetVelocity();
 
-                    if (velocity.y > 0)
+                    if (velocity.y > 0)//if the player is faliing.
                     {
                         float playerFeet = playerPosition.y - feetOffset;
                         float platformTop = platform.m_position.y;
 
-                        float previousFeet = playerFeet - velocity.y;
-
-                        if (previousFeet <= platformTop && playerFeet >= platformTop) {
+                        if (playerFeet >= platformTop) {
                             t_player.SetPosition({ playerPosition.x, platformTop + feetOffset });
                             t_player.SetVelocity({ 0, 0 });
                             platform.m_playerStandingOnPlatform = true;
 
                         }
                     }
-                    else if (velocity.y < 0)
+                    else if (velocity.y < 0 && t_player.GetGravityDirection() < 0)
                     {
+
                         float playerHead = playerPosition.y - 115;
                         float platformBottom = platform.m_position.y + platform.m_size.y;
 
-                        float previousHead = playerHead - velocity.y;
 
-                        if (previousHead >= platformBottom && playerHead <= platformBottom)
+                        if ( playerHead <= platformBottom)
                         {
                             t_player.SetPosition({ playerPosition.x, platformBottom + 115 });
                             t_player.SetVelocity({ 0, 0 });

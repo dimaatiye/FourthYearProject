@@ -9,7 +9,7 @@ platforms:
     - type: platform
       position: { x: 200, y: 720 }
       size: { x: 100, y: 20 }
-    - type: disappearing
+    - type: platform
       position: { x: 400, y: 720 }
       size: { x: 100, y: 20 }
     - type: platform
@@ -44,6 +44,14 @@ star:
 enemies:
   - position: { x: 60, y: 380  }
     endPosition: { x: 300, y: 380}
+    radius: 10
+    speed: 1
+  - position: { x: 300, y: 380  }
+    endPosition: { x: 540, y: 380}
+    radius: 10
+    speed: 1
+  - position: { x: 540, y: 380  }
+    endPosition: { x: 780, y: 380}
     radius: 10
     speed: 1
 gravityDirection: 1.0

@@ -88,5 +88,6 @@
     <None Include="levels\level1.yaml" />
     <None Include="levels\level2.yaml" />
     <None Include="levels\level3.yaml" />
+    <None Include="levels\level4.yaml" />
   </ItemGroup>
 </Project>

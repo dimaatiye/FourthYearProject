@@ -1,0 +1,39 @@
+
+player:
+    position: { x: 550, y: 200 }
+
+platforms:
+    - type: platform
+      position: { x: 0, y: 720 }
+      size: { x: 1100, y: 20 }
+
+    - type: platform
+      position: { x: 100, y: 610 }
+      size: { x: 1050, y: 20 }
+
+    - type: platform
+      position: { x: 0, y: 500 }
+      size: { x: 1000, y: 20 }
+
+    - type: platform
+      position: { x: 100, y: 390 }
+      size: { x: 1000, y: 20 }
+
+    - type: platform
+      position: { x: 0, y: 280 }
+      size: { x: 1000, y: 20 }
+
+    - type: platform
+      position: { x: 100, y: 170 }
+      size: { x: 1000, y: 20 }
+
+  
+level: 3
+
+star:
+    position: { x: 1040, y: 680 }
+    outerRadius: 40
+    innerRadius: 20
+enemies:
+
+gravityDirection: 1.0

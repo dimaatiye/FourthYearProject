@@ -10,7 +10,7 @@ private:
     EnemyData m_data;
 
 public:
-    Enemy(EnemyData m_data);
+    Enemy(EnemyData t_data);
     bool CheckCollision(Vector2 t_playerPosition);
     void Update();
     void Draw();

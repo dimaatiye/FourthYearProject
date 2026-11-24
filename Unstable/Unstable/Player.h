@@ -23,6 +23,7 @@ public:
 	GameState gameState;
 	void SetGravityDirection(float t_direction);
 	void SetGravitySwitchEnabled(bool t_enabled);
+	float GetGravityDirection();
 private:
 	Vector2 position = { 400,500 };
 	Vector2 velocity = { 0,0 };

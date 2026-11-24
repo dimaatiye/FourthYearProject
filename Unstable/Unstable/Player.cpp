@@ -245,4 +245,9 @@ void Player::SetGravitySwitchEnabled(bool t_enabled)
 
 }
 
+float Player::GetGravityDirection()
+{
+	return gravityDirection;
+}
+
 

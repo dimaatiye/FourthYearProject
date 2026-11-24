@@ -6,6 +6,10 @@
 
 void operator >> (const YAML::Node& t_platformNode, PlatformData& t_platform)
 {
+    t_platform.m_active = true;
+    t_platform.m_triggered = false;
+    t_platform.m_playerStandingOnPlatform = false;
+
     t_platform.m_type = t_platformNode["type"].as<std::string>();
 
     t_platform.m_position.x = t_platformNode["position"]["x"].as<float>();
@@ -88,17 +92,13 @@ void operator >> (const YAML::Node& t_levelNode, LevelData& t_level)
         platformsNode[i] >> platform;
         t_level.m_platforms.push_back(platform);
     }
-
 	t_level.m_star.m_active = false; 
-    if (t_levelNode["star"]) {
-        t_levelNode["star"] >> t_level.m_star;
-    }
-
+    t_levelNode["star"] >> t_level.m_star;
 
     t_level.m_enemies.clear();
     if (t_levelNode["enemies"])
     {
-        const YAML::Node& enemiesNode = t_levelNode["enemies"];
+        const YAML::Node& enemiesNode = t_levelNode["enemies"]; //get the list of enemies from the yaml file
 
         for (unsigned int i = 0; i < enemiesNode.size(); ++i)
         {
