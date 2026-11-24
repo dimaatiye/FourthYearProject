@@ -13,6 +13,7 @@
 #include "PlatformManager.h"
 #include "Enemy.h"
 #include <vector>
+#include"FollowerEnemy.h"
 int main() {
 
 	InitWindow(1100, 800, "Unstable");
@@ -23,7 +24,7 @@ int main() {
 	Information information;
 	HUD hud;
 	Menu menu;
-	int currentLevel = 4;
+	int currentLevel = 1;
 	LevelLoader::load(currentLevel, level);
 	player.SetGravityDirection(level.m_gravityDirection);
 	player.SetGravitySwitchEnabled(currentLevel == 3);
@@ -34,6 +35,11 @@ int main() {
 	for (const EnemyData& enemyData : level.m_enemies)
 	{
 		enemies.emplace_back(enemyData);
+	}
+	std::vector<FollowerEnemy> followers;
+	for (const FollowerEnemyData& followerEnemyData : level.m_followers)
+	{
+		followers.emplace_back(followerEnemyData);
 	}
 
 	int score = 0;
@@ -92,6 +98,7 @@ int main() {
 				if (player.GetPosition().y >= 825)
 				{
 
+
 					gameState.SetStatus(DEAD);
 				}
 				if (player.GetPosition().y <= 115)
@@ -99,12 +106,20 @@ int main() {
 
 					gameState.SetStatus(DEAD);
 				}
+				if (currentLevel == 4 && player.GetPosition().x <= 10)
+				{
+					player.SetPosition({ 1040, player.GetPosition().y });
+				}
 
 				collision.CheckPlatforms(player, level);
 				platformManager.Update(player, level);
 				for (Enemy& enemy : enemies)
 				{
 					enemy.Update();
+				}
+				for (FollowerEnemy& follower : followers)
+				{
+					follower.Update(player.GetPosition());
 				}
 				if (collision.CheckStar(player, level))
 				{
@@ -134,6 +149,14 @@ int main() {
 				{
 					enemy.Draw();
 					if (enemy.CheckCollision(player.GetPosition()))
+					{
+						gameState.SetStatus(DEAD);
+					}
+				}
+				for (FollowerEnemy& follower : followers)
+				{
+					follower.Draw();
+					if (collision.CheckFollower(player, follower))
 					{
 						gameState.SetStatus(DEAD);
 					}
@@ -168,7 +191,11 @@ int main() {
 				{
 					enemies.emplace_back(enemyData);
 				}
-
+				followers.clear();
+				for (const FollowerEnemyData& data : level.m_followers)
+				{
+					followers.emplace_back(data);
+				}
 				player.SetGravityDirection(level.m_gravityDirection);
 				player.SetGravitySwitchEnabled(currentLevel == 3);
 				player.SetPosition(level.m_player.m_position);
@@ -184,6 +211,11 @@ int main() {
 				for (const EnemyData& enemyData : level.m_enemies)
 				{
 					enemies.emplace_back(enemyData);
+				}
+				followers.clear();
+				for (const FollowerEnemyData& data : level.m_followers)
+				{
+					followers.emplace_back(data);
 				}
 
 				player.SetGravityDirection(level.m_gravityDirection);
@@ -202,7 +234,11 @@ int main() {
 				{
 					enemies.emplace_back(enemyData);
 				}
-
+				followers.clear();
+				for (const FollowerEnemyData& data : level.m_followers)
+				{
+					followers.emplace_back(data);
+				}
 				player.SetGravityDirection(level.m_gravityDirection);
 				player.SetGravitySwitchEnabled(currentLevel == 3);
 				player.SetPosition(level.m_player.m_position);

@@ -65,7 +65,6 @@ struct FollowerEnemyData
 	Vector2 m_position;   
 	float m_size;
 	float m_speed;
-	float m_sightRange;
 };
 /// <summary>
 /// @brief A struct representing all the level data.

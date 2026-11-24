@@ -8,7 +8,7 @@ platforms:
       size: { x: 1100, y: 20 }
 
     - type: platform
-      position: { x: 100, y: 610 }
+      position: { x: 150, y: 610 }
       size: { x: 1050, y: 20 }
 
     - type: platform
@@ -16,7 +16,7 @@ platforms:
       size: { x: 1000, y: 20 }
 
     - type: platform
-      position: { x: 100, y: 390 }
+      position: { x: 160, y: 390 }
       size: { x: 1000, y: 20 }
 
     - type: platform
@@ -31,16 +31,14 @@ platforms:
 level: 4
 
 star:
-    position: { x: 1040, y: 680 }
+    position: { x: 600, y: 680 }
     outerRadius: 40
     innerRadius: 20
 followers:
-    - position: { x: 200, y: 680 }   # on the platform at y 720, size 40
+    - position: { x: -10, y: 480 }  
+      speed: 7
+      size: 40
+    - position: { x: 800, y: 680 }  
       speed: 2
       size: 40
-      sightRange: 500
-
-    - position: { x: 600, y: 570 }   # on the platform at y 610
-      speed: 3.5
-
 gravityDirection: 1.0

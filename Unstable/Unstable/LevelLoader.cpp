@@ -76,7 +76,6 @@ void operator >> (const YAML::Node& t_followerNode, FollowerEnemyData& t_followe
     t_follower.m_position.y = t_followerNode["position"]["y"].as<float>();
     t_follower.m_speed = t_followerNode["speed"].as<float>();
     t_follower.m_size = t_followerNode["size"].as<float>(40.0f);              
-    t_follower.m_sightRange = t_followerNode["sightRange"].as<float>(400.0f); 
 }
 void operator >> (const YAML::Node& t_levelNode, LevelData& t_level)
 {

@@ -56,7 +56,7 @@ void Player::Update()
 		{
 			position.x = 0;
 		}
-		if(position.x >= 1050)
+		if(position.x >= 1050 )
 		{
 			position.x = 1050;
 		}

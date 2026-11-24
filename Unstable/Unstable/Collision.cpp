@@ -73,3 +73,13 @@ bool Collision::CheckStar(Player& t_player, LevelData& t_level)
 
     return false;
 }
+
+
+
+bool Collision::CheckFollower(Player& t_player, FollowerEnemy& t_follower)
+{
+    Vector2 playerPosition = t_player.GetPosition();
+    Rectangle playerRect = { playerPosition.x - 7, playerPosition.y - 115, playerCollisionWidth, playerCollisionHeight };
+
+    return CheckCollisionRecs(playerRect, t_follower.GetRect());
+}

@@ -1,6 +1,8 @@
 #pragma once
 #include "Player.h"
 #include "LevelLoader.h"
+#include "FollowerEnemy.h"
+
 class Collision
 {
 private:
@@ -11,5 +13,6 @@ private:
 public:
 	void CheckPlatforms(Player& t_player, LevelData& t_level);
 	bool CheckStar(Player& t_player, LevelData& t_level);
+	bool CheckFollower(Player& t_player, FollowerEnemy& t_follower);
 };
 
